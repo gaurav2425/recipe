@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Delete Blog {% endblock title %}
+ 
+{% comment %}       
+{% block blogactive %} active {% endblock blogactive %} 
+{% endcomment %}
+
+{% block body %}
+<div class="container col-6 my-3 align-self-center border border-warning">
+    <h2 style="margin-left:-2%;" class="m-2 text-center text-muted">Delete Post</h2>
+    <hr>
+    <p>
+       <h4>Are you sure you want to delete the post <br><span style="color:red;font-size:1.2em;"> "{{object.title}}" </span></h4> 
+    </p>
+    {% comment %} <div class="row col-10"> {% endcomment %}
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-danger" type= "submit">yes, Delete</button>
+                <a class="btn btn-outline-secondary" href="{% url 'blog:blogPost' object.title %}">Cancel</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

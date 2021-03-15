@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block title %} Profile{% endblock title %} {% block useractive %}active{% endblock useractive %} {% block body %}
+{% load crispy_forms_tags %}
+<div class="container my-4">
+
+    <div class="card border-warning">
+        <div class="card-header bg-success border-warning">
+            <h2 style="margin-left:-2%;" class="m-2 text-center" style="color:black;"><span style="color:White;" class="text-light">@{{user.username}}</span> - Update your Profile</h2>
+        </div>
+        <div class="card-body">
+        {% comment %} <hr> {% endcomment %}
+            <div>
+                <form action="" method="post" enctype = "multipart/form-data">
+
+                    {% csrf_token %}
+            
+                    <fieldset class="form-group">
+                        {{ u_form|crispy }}         
+                        {{ p_form|crispy }}         
+                        </fieldset>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-outline-info" type= "submit">Update</button>
+                    </div>
+                </form>
+                    
+            {% comment %} </div> {% endcomment %}
+            </div>
+        </div>
+        <div class="card-footer text-muted border-warning">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <small class="text-muted">
+                    Everything is fine... <a class="ml-2" href="users:profile">go back to the profile page</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
+
+{% endblock %}

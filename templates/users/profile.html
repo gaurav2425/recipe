@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block title %} Profile{% endblock title %} {% block useractive %}active{% endblock useractive %} {% block body %}
+
+<div class="container my-4">
+
+    <div class="card border-warning">
+        <div class="card-header text-white bg-success border-warning">
+            <h3 class="card-title">Welcome <b>{{user.username}}</b> to your Profile</h3>
+        </div>
+        <div class="card-body">
+            <!-- <h5 class="card-title">Special title treatment 1</h5> -->
+            <div class="row align-items-center">
+                <div class="col-sm-4">
+                    <div class="card border-warning">
+                        <div class="card-body">
+                            <img src="{{user.profile.image.url}}" class="card-img img-fluid rounded" alt="{{user.username}} image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card border-warning ">
+                        <div class="card-body">
+                            <!-- <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5> -->
+                            <!-- <p class="card-text">{{user.email}}</p> -->
+                            <form>
+                                <div class=" mb-3">
+                                    <label for="users_fullname" class="form-label text-start">Full Name</label>
+                                    <input class="form-control" type="text" id="users_fullname" placeholder="{{user.first_name}} {{user.last_name}}" aria-label="{{user.first_name}} {{user.last_name}}" readonly disabled>
+                                </div>
+                                <div class=" mb-3">
+                                    <label for="users_username" class="form-label text-start">User Name</label>
+                                    <input class="form-control" type="text" id="users_username" placeholder="{{user.username}}" aria-label="{{user.username}}" readonly disabled>
+                                </div>
+                                <div class=" mb-3">
+                                    <label for="users_email" class="form-label text-start">E-Mail</label>
+                                    <input class="form-control" type="email" id="users_email" placeholder="{{user.email}}" aria-label="{{user.email}}" readonly disabled>
+                                </div>
+                            </form>
+                            <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a class="btn btn-outline-primary btn-sm mr-2" type="button">My Posts</a>
+                                <a class="btn btn-outline-primary btn-sm me-md-2" type="button">Update Profile</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+        <div class="card-footer text-muted border-warning">
+            <!-- 2 days ago -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-outline-primary btn-sm mr-2" type="button" href="{% url 'blog:blogHome' %}">My Posts</a>
+                <a class="btn btn-outline-primary btn-sm me-md-2" type="button" href="{% url 'users:updateprofile' %}">Update Profile</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

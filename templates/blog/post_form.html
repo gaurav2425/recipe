@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} New_Blog {% endblock title %}
+ 
+{% comment %}       
+{% block blogactive %} active {% endblock blogactive %} 
+{% endcomment %}
+
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container col-6 my-3 align-self-center border">
+    <h2 style="margin-left:-2%;" class="m-2 text-center text-muted">Blog Post</h2>
+    <hr>
+    {% comment %} <div class="row col-10"> {% endcomment %}
+    <div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}         
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type= "submit">Post</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
