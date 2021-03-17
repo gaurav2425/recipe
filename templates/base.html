@@ -11,11 +11,21 @@
 
     <title>{% block title %} {% endblock title %}</title>
     {% block titlejs %}{% endblock titlejs %}
+    <style>
+        .blog-footer {
+            padding: 2.5rem 0;
+            color: #727272;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-top: .05rem solid #e5e5e5;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id='top'>
         <a class="navbar-brand" href="/">iCoder</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -130,8 +140,11 @@
         </div>
     </div>
 
+    <main style="min-height:600px;">
 
-    {% block body %} {% endblock body %} {% block js %} {% endblock js %}
+        {% block body %} {% endblock body %} {% block js %} {% endblock js %}
+
+    </main>
 
     <!-- Login Modal -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
@@ -162,6 +175,14 @@
             </div>
         </div>
     </div>
+
+
+    <footer class="blog-footer">
+        <p>Blog template built for <a href="">Practice</a> by <a href="https://www.linkedin.com/in/ajinkya-sahu/">Ajinkya Sahu</a>.</p>
+        <p>
+            <a href="#top">Back to top</a>
+        </p>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

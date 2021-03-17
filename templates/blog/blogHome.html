@@ -18,28 +18,32 @@
 <div class="container my-3">
     <h2>Articles by {{user.username}} ({{ page_obj.paginator.count }})</h2>
     <div class="alert alert-warning bg-light p-3 m-2 d-md-flex justify-content-md-end">
-        <a href="{% url 'home:home' %}"  class="btn btn-success mr-4"  role="button">View All Posts</a>
-        <a href="{% url 'blog:new_blog' %}" class="btn btn-success mr-4"  role="button">Upload More Post</a>
+        <a href="{% url 'home:home' %}"  class="btn btn-outline-success mr-4 rounded-pill"  role="button">View All Posts</a>
+        <a href="{% url 'blog:new_blog' %}" class="btn btn-outline-success mr-4 rounded-pill"  role="button">Upload More New Post</a>
     </div>
     {% if allPosts %}
         {% for post in allPosts  %}
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+            <div class="row no-gutters align-items-center border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                <div class="col-3 d-none d-lg-block p-3 align-items-center justify-content-center">
+                    <img src="{{post.author.profile.image.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}">
+                </div>
+            
                 <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}} ({{post.views}})</strong>
                     <h3 class="mb-0"><a class="text-dark"href="{% url 'blog:blogPost' post.title %}">{{post.title}} </a> </h3>
                     <div class="mb-1 text-muted">{{post.datetime}}</div>
-                    <p class="card-text mb-auto">{{post.content|safe |truncatechars:200}}</p>
+                    <p class="card-text mb-auto mt-3">{{post.content|safe |truncatechars:200}}</p>
                     <div class="my-2">
                         <a href="{% url 'blog:blogPost' post.title %}" role="button" class="btn btn-primary">Continue reading</a>
                     </div>
                     
                 </div>
-                <div class="col-auto d-none d-lg-block">
+                {% comment %} <div class="col-auto d-none d-lg-block">
                     <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                         <title>Placeholder</title>
                         <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                     </svg>
-                </div>
+                </div> {% endcomment %}
             </div>
         {% endfor %}
         <div class="mt-4">

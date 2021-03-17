@@ -8,7 +8,7 @@
 <div class="container my-3">
     <h2 class="blog-post-title">{{post.title}}</h2>
     <p class="blog-post-meta">{{post.timeStamp}} by <a href="{% url 'blog:user-post' post.author.username %}">{{post.author.username}}</a> (<span > {{post.views}} views</span>)</p>
-    <p>{{post.content|safe}}</p>
+    <p class="mt-2">{{post.content|safe}}</p>
     <br>
     <br>
     <hr class="mt-4" >

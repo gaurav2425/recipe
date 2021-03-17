@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from django.urls import reverse
-
+from tinymce.models import HTMLField  
+  
+  
 class Post(models.Model):
     sno=models.AutoField(primary_key=True)
     title=models.CharField(max_length=255,unique = True)
@@ -10,7 +12,7 @@ class Post(models.Model):
     slug=models.CharField(max_length=130)
     views= models.IntegerField(default=0)
     timeStamp=models.DateTimeField(default = now)
-    content=models.TextField()
+    content =  HTMLField() 
 
 
     def __str__(self):

@@ -27,7 +27,8 @@ urlpatterns = [
     path("blog/",include('blog.urls')),
     path("",include('home.urls')),
     path("users/",include('users.urls')),
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('tinymce/', include('tinymce.urls')),
 ] 
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

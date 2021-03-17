@@ -1,14 +1,37 @@
 {% extends 'base.html' %}
-
-{% block title %} New_Blog {% endblock title %}
+ 
+{% block title %} New_Blog - new post{% endblock title %}
  
 {% comment %}       
 {% block blogactive %} active {% endblock blogactive %} 
 {% endcomment %}
+{% block titlejs %}
+    <script src="https://cdn.tiny.cloud/1/thgg07r92awby69y1zr09hhggwr673aa28du6l6oo7pavwxa/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+    tinymce.init({
+        selector: '#id_content',
+        cleanup_on_startup: 'True',
+        custom_undo_redo_levels: 20,
+        
+        theme: 'silver',
+        plugins: ' textcolor save link image media preview codesample contextmenu code lists fullscreen  insertdatetime  nonbreaking contextmenu directionality searchreplace wordcount visualblocks visualchars code fullscreen autolink lists  charmap print  hr anchor pagebreak',
+        toolbar1: ' fullscreen preview bold italic underline | fontselect, fontsizeselect  | forecolor backcolor | alignleft alignright | aligncenter alignjustify | indent outdent | bullist numlist table | link image media | codesample ',
+        toolbar2: ' visualblocks visualchars | charmap hr pagebreak nonbreaking anchor |  code ',
+        contextmenu: 'formats | link image',
+        menubar: 'True',
+        statusbar: 'True',
+    });
+    </script>
+    <style>
+        #id_content{
+            min-height:500px;
+        }
+    </style>
+{% endblock titlejs %}
 
 {% load crispy_forms_tags %}
 {% block body %}
-<div class="container col-6 my-3 align-self-center border">
+<div class="container col-8 my-3 align-self-center border">
     <h2 style="margin-left:-2%;" class="m-2 text-center text-muted">Blog Post</h2>
     <hr>
     {% comment %} <div class="row col-10"> {% endcomment %}
@@ -21,7 +44,6 @@
             <div class="form-group">
                 <button class="btn btn-outline-info" type= "submit">Post</button>
             </div>
-
         </form>
     </div>
 </div>

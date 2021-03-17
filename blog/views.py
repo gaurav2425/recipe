@@ -90,8 +90,6 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 
 
 
-
-
 @login_required()
 def newBlog(request):
     form = NewPostForm() 
