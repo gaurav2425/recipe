@@ -42,10 +42,11 @@
                 <li class="nav-item {% block contactactive %}  {% endblock contactactive %} ">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item {% block blogactive %}  {% endblock blogactive %} ">
                     <a class="nav-link" href="{% url 'blog:blogHome' %}">My Blogs</a>
                 </li>
-
+                {% endif %}
             </ul>
             <div class="ml-auto form-inline ">
                 <form method="get" action="/search" class="my-2 my-lg-0 mx-3">
@@ -72,10 +73,10 @@
             <!-- Button to  trigger Login modal -->
             <!-- <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#loginModal">
             Login </button> -->
-            <a href="users/login" class="btn btn-primary mr-2">
+            <a href="{% url 'users:login' %}" class="btn btn-primary mr-2">
                 Login
             </a>
-            <a class="btn btn-primary mr-2" href="/users/register"> Sign Up</a>
+            <a class="btn btn-primary mr-2" href="{% url 'users:register' %}"> Sign Up</a>
             <!-- <button type="button"  data-toggle="modal" data-target="#">
             </button>  -->
             {% endif %}

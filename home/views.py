@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate, login, logout
 from users.forms import UserRegisterForm
 # Create your views here.
-
+from django.views.generic import ListView
 from home.models import Contact
 from django.contrib.auth.decorators import login_required
 
@@ -49,15 +49,35 @@ class PostListView(ListView):
 def about(request):
     return render(request,'home/about.html')
 
+class PostSearchListView(ListView):
+    model = Post
+    template_name = 'home/search.html'      # App / <model>_<viewtype>.html
+    context_object_name = 'allPosts'
+    paginate_by = 5
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        print(query)
+        
+        if len(query)>=78 :
+            posts = Post.objects.none()
+        else:
+            postsContent = Post.objects.filter(content__icontains=query)
+            postsTitle = Post.objects.filter(title__icontains=query)
+            postsAuthor = Post.objects.filter(author__username__icontains=query)
+            posts = postsTitle.union(postsContent,postsAuthor)
+        return posts.order_by('-timeStamp')
+        
+
 def search(request):
     # posts = Post.objects.all()
     query = request.GET.get('query')
+    print(query)
     if len(query)>=78 :
         posts = Post.objects.none()
     else:
         postsContent = Post.objects.filter(content__icontains=query)
         postsTitle = Post.objects.filter(title__icontains=query)
-        postsAuthor = Post.objects.filter(author__icontains=query)
+        postsAuthor = Post.objects.filter(author__username__icontains=query)
         posts = postsTitle.union(postsContent,postsAuthor)
     return render(request,'home/search.html',{"allPosts":posts,'query': query})
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import PostListView
+from .views import PostListView,PostSearchListView
 
 app_name = "home" 
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('contact', views.contact,name='contact'),
     path('about', views.about,name='about'),
     path('search', views.search,name='search'),
+    # path('search', PostSearchListView.as_view(),name='search'),
 ]

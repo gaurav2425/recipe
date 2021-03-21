@@ -19,25 +19,41 @@
         </div>
     {% else %}
         {% for post in allPosts  %}
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                    <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}}</strong>
-                    <h3 class="mb-0">{{post.title}}</h3>
-                    <div class="mb-1 text-muted">{{post.datetime}}</div>
-                    <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
-                    <div class="my-2">
-                        <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Continue reading</a>
-                    </div>
-                    
+            <div class="row no-gutters border align-items-center rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+                <div class="col-3 d-none d-lg-block p-3">
+                    {% comment %} <h4>{{post.author.first_name}} {{post.author.last_name}}</h4> {% endcomment %}
+                    <img src="{{post.author.profile.image.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}">
                 </div>
-                <div class="col-auto d-none d-lg-block">
-                    <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                    </svg>
+                <div class="col p-4 d-flex flex-column position-static">
+                    <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}} ({{post.views}})</strong>
+                    <h3 class="mb-0"><a class="text-dark" href="{% url 'blog:blogPost' post.title %}">{{post.title}} </a> </h3>
+                    <div class="mb-1 text-muted">{{post.datetime}}</div>
+                    <p class="card-text mb-auto mt-3">{{post.content|safe |truncatechars:200}}</p>
+                    <div class="my-2">
+                        <a href="{% url 'blog:blogPost' post.title %}" role="button" class="btn btn-primary">Continue reading</a>
+                    </div>
                 </div>
             </div>
         {% endfor %}
+        <div class="mt-4">
+            {% if is_paginated %}
+                {% if page_obj.has_previous %}
+                    <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+                    <a class="btn btn-outline-info mb-4" href="?page={{page_obj.previous_page_number}}">Previous</a>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <a class="btn btn-info mb-4" href="?page={{num}}">{{num}}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if page_obj.has_next %}
+                    <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}">Next</a>
+                    <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages}}">Last</a>
+                {% endif %}
+            {% endif %}
+        </div>                                  
     {% endif %}
 </div>
  {% endblock %}
