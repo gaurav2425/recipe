@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 
+
+
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,13 +23,61 @@
             border-top: .05rem solid #e5e5e5;
             margin-top: 20px;
         }
+        .navbar {
+  background-color: rgb(74, 77, 243);
+}
+.nav-link{
+    color: white;
+    /* background-color: yellow; */
+    /* border-bottom: 3px solid white; */
+    /* border-bottom-left-radius: 10px; */
+    border-bottom: 3px solid rgb(74, 77, 243);
+    
+    
+}
+
+.nav-link:hover{
+    /* color: rgb(194, 34, 34); */
+    /* background-color: yellow; */
+    border-bottom: 3px solid white;
+    /* border-bottom-left-radius: 10px; */
+    
+    color: white;
+    
+}
+
+.btn-search{
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+}
+
+.btn-search:hover{
+    background-color: rgb(5, 179, 5);
+}
+
+.admin-btn{
+    background-color: rgb(5, 179, 5);
+    color: white;
+    border-radius: 100px;
+}
+
+.recipe-input{
+    border-radius: 50px;
+    outline: none;
+    border: none;
+}
+
+.navbar-brand{
+    color: white;
+}
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id='top'>
-        <a class="navbar-brand" href="/">iCoder</a>
+    <nav class="navbar navbar-expand-lg " id='top'>
+        <a class="navbar-brand" href="/">RecipeApp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,15 +95,15 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item {% block blogactive %}  {% endblock blogactive %} ">
-                    <a class="nav-link" href="{% url 'blog:blogHome' %}">My Blogs</a>
+                    <a class="nav-link" href="{% url 'blog:blogHome' %}">My Recipes</a>
                 </li>
                 {% endif %}
             </ul>
             <div class="ml-auto form-inline ">
                 <form method="get" action="/search" class="my-2 my-lg-0 mx-3">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
-                    <button class="btn btn-primary my-2 my-sm-0 " type="submit">Search</button>
-                    <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0"> Admin Panel </a>
+                    <input class="form-control mr-sm-2 recipe-input" type="search" placeholder="Search Recipes here" aria-label="Search" name="query" id="query">
+                    <button class="btn btn-primary my-2 my-sm-0 btn-search" type="submit">Search</button>
+                    <a href="/admin" role="button" target="_blank" class="btn btn-outline-success m-2 my-sm-0 admin-btn"> Admin Panel </a>
                 </form>
 
 
@@ -179,7 +230,7 @@
 
 
     <footer class="blog-footer">
-        <p>Blog template built for <a href="">Practice</a> by <a href="https://www.linkedin.com/in/ajinkya-sahu/">Ajinkya Sahu</a>.</p>
+        <p>Blog template built for <a href="">Recipe application</a> by <a href="https://www.linkedin.com/in/ajinkya-sahu/">Ajinkya Sahu</a>.</p>
         <p>
             <a href="#top">Back to top</a>
         </p>

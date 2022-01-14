@@ -4,11 +4,11 @@
 {% else %}
 <div class="container">
     <div class="jumbotron my-3">
-        <h1 class="display-4">Welcome to iCoder!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="/blog" role="button">Go to Blog</a>
+        <h1 class="display-4">Welcome to Recipe App!</h1>
+        <p class="lead">This is a simple recipe application where user can upload and read recipes</p>
+        <!-- <hr class="my-4"> -->
+        <!-- <p>It uses utility classes for typography and spacing to space content out within the larger container.</p> -->
+        <!-- <a class="btn btn-primary btn-lg" href="/blog" role="button">Go to Blog</a> -->
     </div>
 </div>
 {% endif %} 
@@ -16,7 +16,7 @@
 {% comment %} {% endif %} {% endcomment %}
 
 <div class="container">
-    <h2>Latest Blogposts</h2>
+    <h2>Latest Recipes</h2>
     {% for post in allPosts  %}
     <div class="row no-gutters border align-items-center rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
         <div class="col-3 d-none d-lg-block p-3">
