@@ -2,8 +2,59 @@
 
 {% if is_paginated and page_obj.has_previous %}
 {% else %}
+
+<style>
+
+    body{
+            /* background-color: burlywood; */
+            /* align-items: center;
+            justify-content: center; */
+            /* display: flex;
+            flex-direction: column; */
+        }
+    
+        .container_main{
+            background-color: rgb(255, 255, 255);
+            /* width: 1000px; */
+            width: 70vw;
+         
+            display: flex;
+            flex-direction: row;
+        }
+        .container{
+            /* background-color: brown; */
+            /* height: 1000px; */
+    
+        }
+
+        .body_container{
+            /* background-color: chartreuse; */
+            align-items: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .recipe_background{
+            background: rgb(255, 255, 255);
+            background-size: cover;
+            
+        }
+
+        body{
+            background-image: url("https://images.pexels.com/photos/1030947/pexels-photo-1030947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            
+        }
+    
+       
+    </style>
+
+<div class="body_container">
+    
 <div class="container">
-    <div class="jumbotron my-3">
+    <div class="jumbotron my-3 recipe_background">
         <h1 class="display-4">Welcome to Recipe App!</h1>
         <p class="lead">This is a simple recipe application where user can upload and read recipes</p>
         <!-- <hr class="my-4"> -->
@@ -15,16 +66,18 @@
 
 {% comment %} {% endif %} {% endcomment %}
 
-<div class="container">
+
+
+<div class="container_m">
     <h2>Latest Recipes</h2>
     {% for post in allPosts  %}
-    <div class="row no-gutters border align-items-center rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+    <div class="row no-gutters border align-items-center rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative container_main">
         <div class="col-3 d-none d-lg-block p-3">
             {% comment %} <h4>{{post.author.first_name}} {{post.author.last_name}}</h4> {% endcomment %}
             <img src="{{post.author.profile.image.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}">
         </div>
-        <div class="col p-4 d-flex flex-column position-static">
-            <strong class="d-inline-block mb-2 text-primary">Article  by {{post.author}} ({{post.views}})</strong>
+        <div class="col p-3 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Recipe  by {{post.author}} ({{post.views}})</strong>
             <h3 class="mb-0"><a class="text-dark" href="{% url 'recipe:recipePost' post.title %}">{{post.title}} </a> </h3>
             <div class="mb-1 text-muted">{{post.datetime}}</div>
             <p class="card-text mb-auto mt-3">{{post.content|safe |truncatechars:200}}</p>
@@ -58,3 +111,4 @@
 </div>
 
 {% endblock %}
+</div>

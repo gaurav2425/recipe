@@ -10,12 +10,19 @@
       });
       </script>
       {% endblock js %}
+
+     
       
 {% comment %} {% block blogactive %} active {% endblock blogactive %}  {% endcomment %}
 
-
+<style>
+    .container_main{
+        width: 500px;
+        background-color: blueviolet;
+    }
+</style>
 {% block body %}
-<div class="container my-3">
+<div class="container my-3 container_main">
     <h2>Recipes by {{view.kwargs.username}} ({{ page_obj.paginator.count }})</h2>
     {% for post in allPosts  %}
         <div class="row no-gutters border rounded align-items-center overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
