@@ -15,6 +15,11 @@ class NewRecipeForm(forms.ModelForm):
             attrs={'required': False, 'cols': 30, 'rows': 10} 
         ) 
     ) 
+    ingredients = forms.CharField( 
+        widget=TinyMCEWidget( 
+            attrs={'required': False, 'cols': 30, 'rows': 10} 
+        ) 
+    ) 
 
     class Meta: 
         model = Recipe 

@@ -27,7 +27,7 @@
     {% for post in allPosts  %}
         <div class="row no-gutters border rounded align-items-center overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
             <div class="col-3 d-none d-lg-block p-3 align-self-center justify-content-center">
-                <img src="{{post.author.profile.image.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}">
+                <img src="{{post.pic.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}">
             </div>
             <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-primary">Recipe  by {{post.author}} ({{post.views}})</strong>

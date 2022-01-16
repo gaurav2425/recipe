@@ -33,17 +33,10 @@
             {% endif %}
         </div>
 
-        
-        <h1>Image Path</h1>
-      
-        <p>{{post.pic|safe}}</p>
-
-        <h1>Image Path</h1>
-
-        <img src="{{post.pic}}"  alt="" class="recipe_image">
+        <img src="{{post.pic.url}}"  alt="" class="recipe_image">
        
 
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRySQWC0abJmDb6-ThxGNw0-7NtizbPveXdG6624agMbu98hLeDMJ84yyQQsf4AoZgThRg&usqp=CAU" alt="" class="recipe_image">
+        {% comment %} <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRySQWC0abJmDb6-ThxGNw0-7NtizbPveXdG6624agMbu98hLeDMJ84yyQQsf4AoZgThRg&usqp=CAU" alt="" class="recipe_image"> {% endcomment %}
        
         <!-- <img src="{{post.author.profile.image.url}}" class="img-thumbnail rounded-circle" style="height:180px;width:180px;" alt="img - {{post.author.username}}"> -->
         <!-- <p>safe</p> -->
@@ -58,7 +51,7 @@
 
         <p>{{post.content|safe}}</p>
         <br>
-        <hr class="my-3" >
+        {% comment %} <hr class="my-3" > {% endcomment %}
     </div>
     
     <div class="container comments_main">
