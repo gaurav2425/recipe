@@ -19,12 +19,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-admin.site.site_header = "Icoder Admin"
-admin.site.site_title = "Icoder Admin"
-admin.site.index_title = "Icoder Title"
+admin.site.site_header = "Acoder Admin"
+admin.site.site_title = "Acoder Admin"
+admin.site.index_title = "Acoder Title"
 
 urlpatterns = [
-    path("blog/",include('blog.urls')),
+    path("recipe/",include('recipe.urls')),
     path("",include('home.urls')),
     path("users/",include('users.urls')),
     path('admin/', admin.site.urls),

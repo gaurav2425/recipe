@@ -19,7 +19,7 @@
     <h2>Recipes by {{user.username}} ({{ page_obj.paginator.count }})</h2>
     <div class="alert alert-warning bg-light p-3 m-2 d-md-flex justify-content-md-end">
         <a href="{% url 'home:home' %}"  class="btn btn-outline-success mr-4 rounded-pill"  role="button">View All Posts</a>
-        <a href="{% url 'blog:new_blog' %}" class="btn btn-outline-success mr-4 rounded-pill"  role="button">Upload More New Post</a>
+        <a href="{% url 'recipe:new_recipe' %}" class="btn btn-outline-success mr-4 rounded-pill"  role="button">Upload More New Post</a>
     </div>
     {% if allPosts %}
         {% for post in allPosts  %}
@@ -30,11 +30,11 @@
             
                 <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">Recipe  by {{post.author}} ({{post.views}})</strong>
-                    <h3 class="mb-0"><a class="text-dark"href="{% url 'blog:blogPost' post.title %}">{{post.title}} </a> </h3>
+                    <h3 class="mb-0"><a class="text-dark"href="{% url 'recipe:recipePost' post.title %}">{{post.title}} </a> </h3>
                     <div class="mb-1 text-muted">{{post.datetime}}</div>
                     <p class="card-text mb-auto mt-3">{{post.content|safe |truncatechars:200}}</p>
                     <div class="my-2">
-                        <a href="{% url 'blog:blogPost' post.title %}" role="button" class="btn btn-primary">Continue reading</a>
+                        <a href="{% url 'recipe:recipePost' post.title %}" role="button" class="btn btn-primary">Continue reading</a>
                     </div>
                     
                 </div>

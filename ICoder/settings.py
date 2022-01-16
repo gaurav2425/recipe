@@ -35,7 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'tinymce',
     'home.apps.HomeConfig', 
-    'blog.apps.BlogConfig',
+    'recipe.apps.RecipeConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',

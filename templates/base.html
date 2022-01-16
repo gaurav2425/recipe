@@ -95,7 +95,7 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item {% block blogactive %}  {% endblock blogactive %} ">
-                    <a class="nav-link" href="{% url 'blog:blogHome' %}">My Recipes</a>
+                    <a class="nav-link" href="{% url 'recipe:recipeHome' %}">My Recipes</a>
                 </li>
                 {% endif %}
             </ul>
@@ -113,7 +113,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% block useractive %}  {% endblock useractive %}" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url 'blog:new_blog'%}">New Post</a>
+                            <a class="dropdown-item" href="{% url 'recipe:new_recipe'%}">New Post</a>
                             <a class="dropdown-item" href="{% url 'users:profile'%}">Profile</a>
                             <a class="dropdown-item" href="{% url 'users:logout'%}">Logout</a>
                         </div>
@@ -230,7 +230,7 @@
 
 
     <footer class="blog-footer">
-        <p>Blog template built for <a href="">Recipe application</a> by <a href="https://www.linkedin.com/in/ajinkya-sahu/">Ajinkya Sahu</a>.</p>
+        <p>Web template built for <a href="">Recipe application</a> by <a href="https://www.linkedin.com/in/ajinkya-sahu/">Ajinkya Sahu</a>.</p>
         <p>
             <a href="#top">Back to top</a>
         </p>
