@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect 
 from django.http import HttpResponse
 from django.contrib import messages
-from blog.models import Post
+from recipe.models import Recipe
 from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate, login, logout
 from users.forms import UserRegisterForm
@@ -30,7 +30,7 @@ def contact(request):
 
 
 def home(request):
-    allPosts= Post.objects.all()
+    allPosts= Recipe.objects.all()
     context={'allPosts': allPosts}
     
     return render(request,'home/home.html',context)
@@ -39,7 +39,7 @@ def home(request):
 # classbased view of home fuction.... required to uncomment certains things in urls.py
 from django.views.generic import ListView  # , DetailView, CreateView # other views....
 class PostListView(ListView):
-    model = Post
+    model = Recipe
     template_name = 'home/home.html'      # App / <model>_<viewtype>.html
     context_object_name = 'allPosts'
     ordering = ['-timeStamp']
@@ -50,7 +50,7 @@ def about(request):
     return render(request,'home/about.html')
 
 class PostSearchListView(ListView):
-    model = Post
+    model = Recipe
     template_name = 'home/search.html'      # App / <model>_<viewtype>.html
     context_object_name = 'allPosts'
     paginate_by = 5
@@ -59,12 +59,18 @@ class PostSearchListView(ListView):
         print(query)
         
         if len(query)>=78 :
-            posts = Post.objects.none()
+            posts = Recipe.objects.none()
         else:
-            postsContent = Post.objects.filter(content__icontains=query)
-            postsTitle = Post.objects.filter(title__icontains=query)
-            postsAuthor = Post.objects.filter(author__username__icontains=query)
-            posts = postsTitle.union(postsContent,postsAuthor)
+            postsContent = Recipe.objects.filter(content__icontains=query)
+            postsIngredients = Recipe.objects.filter(ingredients__icontains=query)
+            postsTitle = Recipe.objects.filter(title__icontains=query)
+            postsAuthor = Recipe.objects.filter(author__username__icontains=query)
+            posts1 = postsTitle.union(postsContent,postsAuthor)
+            posts = postsTitle.union(posts1,postsIngredients)
+            print(postsIngredients)
+            print(posts1)
+            print(postsAuthor)
+            print(postsContent)
         return posts.order_by('-timeStamp')
         
 
@@ -73,12 +79,13 @@ def search(request):
     query = request.GET.get('query')
     print(query)
     if len(query)>=78 :
-        posts = Post.objects.none()
+        posts = Recipe.objects.none()
     else:
-        postsContent = Post.objects.filter(content__icontains=query)
-        postsTitle = Post.objects.filter(title__icontains=query)
-        postsAuthor = Post.objects.filter(author__username__icontains=query)
-        posts = postsTitle.union(postsContent,postsAuthor)
+        postsContent = Recipe.objects.filter(content__icontains=query)
+        postsIngredients = Recipe.objects.filter(ingredients__icontains=query)
+        postsTitle = Recipe.objects.filter(title__icontains=query)
+        postsAuthor = Recipe.objects.filter(author__username__icontains=query)
+        posts = postsTitle.union(postsContent,postsAuthor,postsIngredients)
     return render(request,'home/search.html',{"allPosts":posts,'query': query})
 
 
