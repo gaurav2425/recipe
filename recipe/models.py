@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
   
 def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT / user_<id>/<filename>
-    return 'uploads/user_{0}/{1}'.format(instance.user.id, filename)
+    return 'uploads/user_{0}/{1}'.format(instance.author_id, filename)
 
 class Recipe(models.Model):
     sno=models.AutoField(primary_key=True)
