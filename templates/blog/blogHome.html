@@ -15,6 +15,23 @@
 
 
 {% block body %}
+
+<style>
+    body{
+        /* padding-left: 100px;
+        background-color: black; */
+        background-image: url("https://images.pexels.com/photos/1030947/pexels-photo-1030947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+            background-size: cover;
+            width: 100vw;
+            /* height: 100vw; */
+            /* padding-bottom: 40px; */
+    }
+
+    .container{
+        background-color: white;
+    }
+</style>
+
 <div class="container my-3">
     <h2>Recipes by {{user.username}} ({{ page_obj.paginator.count }})</h2>
     <div class="alert alert-warning bg-light p-3 m-2 d-md-flex justify-content-md-end">
