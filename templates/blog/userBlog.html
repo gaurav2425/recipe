@@ -22,6 +22,8 @@
     }
 </style>
 {% block body %}
+
+
 <div class="container my-3 container_main">
     <h2>Recipes by {{view.kwargs.username}} ({{ page_obj.paginator.count }})</h2>
     {% for post in allPosts  %}
